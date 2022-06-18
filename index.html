@@ -19,21 +19,21 @@ body { margin: 0; padding: 0; }
 
 let initLoad = true;
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoid2lsbGlhbS1kYXZpcyIsImEiOiJja2tiYWtvbWcwMmtzMnBvajh3M2kxZGRuIn0.GeROaHKn2Gbvsg1e8buJEw';
+mapboxgl.accessToken = 'pk.eyJ1IjoicnVra3UiLCJhIjoiZEJocE9tSSJ9.tWSIxlu5AHgccim4JMuWLQ';
 const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
-    center: [0, 40],
+    center: [120, 14],
     zoom: 3,
     projection: 'globe',
-    maxZoom: 6
+    maxZoom: 24
 });
 
 map.on('load', () => {
     let airports;
 
     map.once('idle', () => {
-        d3.json("./data/airport.json", function (d) {
+        d3.json("./data/first_cleaned.geojson", function (d) {
             airports = d;
             getSpoke(airports);
         });
