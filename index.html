@@ -32,8 +32,10 @@ const map = new mapboxgl.Map({
 map.on('load', () => {
     let airports;
 
+    
+
     map.once('idle', () => {
-        d3.json("./data/first_cleaned.geojson", function (d) {
+        d3.json("./data/pantries.geojson", function (d) {
             airports = d;
             getSpoke(airports);
         });
