@@ -22,7 +22,7 @@ let initLoad = true;
 mapboxgl.accessToken = 'pk.eyJ1IjoicnVra3UiLCJhIjoiZEJocE9tSSJ9.tWSIxlu5AHgccim4JMuWLQ';
 const map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
+    style: 'mapbox://styles/mapbox/dark-v11',
     center: [121.0592, 14.6464],
     zoom: 12,
     projection: 'globe',
@@ -35,7 +35,7 @@ map.on('load', () => {
     
 
     map.once('idle', () => {
-        d3.json("./data/pantries.geojson", function (d) {
+        d3.json("./data/fcp-geom.geojson", function (d) {
             airports = d;
             getSpoke(airports);
         });
@@ -121,7 +121,8 @@ function addLayers(airports, nearest, route) {
             'line-cap': 'round'
         },
         'paint': {
-            'line-color': 'red',
+            'line-color': 'white',
+            'line-opacity': 0.8,
             'line-width': [
                 'interpolate',
                 ['linear'],
@@ -150,7 +151,7 @@ function addLayers(airports, nearest, route) {
             ],
             'circle-opacity': 1,
             'circle-blur': 0,
-            'circle-color': '#555'
+            'circle-color': '#aaaaaa'
         }
     });
 
@@ -170,7 +171,7 @@ function addLayers(airports, nearest, route) {
             ],
             'circle-opacity': 1,
             'circle-blur': 0,
-            'circle-color': 'red'
+            'circle-color': '#ffffff'
         }
     });
 }
